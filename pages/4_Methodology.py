@@ -1,8 +1,12 @@
 import streamlit as st
+from ui import apply_style
 from pathlib import Path
 
 st.set_page_config(page_title="Methodology", layout="wide")
+apply_style()
+st.markdown('<div class="section-label">04 / RESEARCH WORKFLOW</div>', unsafe_allow_html=True)
 st.title("Project Methodology")
+st.markdown('<div class="page-intro">From raw data to a deployed classification model.</div>', unsafe_allow_html=True)
 
 for title, description in [
     ("1. Dataset split", "60% training, 20% validation and 20% testing."),
