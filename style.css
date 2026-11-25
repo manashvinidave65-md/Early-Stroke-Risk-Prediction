@@ -1,0 +1,19 @@
+/* Shared visual theme for all six pages */
+.stApp {background: #f4f8fa;}
+.block-container {max-width: 1150px; padding-top: 3rem; padding-bottom: 3rem;}
+[data-testid="stSidebar"] {background: #e5eff1;}
+[data-testid="stSidebarNav"] {padding-top: 1rem;}
+h1,h2,h3 {letter-spacing: -0.035em; color: #102b40;}
+[data-testid="stMetric"] {background: white; border: 1px solid #dce8eb; border-radius: 16px; padding: 18px; box-shadow: 0 5px 18px #102b4009; border-top: 3px solid #0f766e;}
+[data-testid="stMetricValue"] {color: #0f766e;}
+[data-testid="stForm"] {background: white; border: 1px solid #dce8eb; border-radius: 18px; padding: 24px;}
+.stButton button, .stFormSubmitButton button {border-radius: 10px; font-weight: 600;}
+[data-testid="stImage"] img {border-radius: 12px;}
+.hero {background: linear-gradient(125deg,#102b40,#124e59); color: #fff; padding: clamp(24px,5vw,54px); border-radius: 24px; margin-bottom: 24px; overflow: hidden;}
+.hero h1 {color: white; font-size: clamp(2rem,5vw,3.5rem); line-height: 1.1; margin: 14px 0;}
+.hero p {color: #d5e8eb; max-width: 620px; font-size: 1.08rem;}
+.eyebrow {font-size: .75rem; font-weight: 700; letter-spacing: .15em; color: #99e7d6;}
+.pulse {width: 100%; max-width: 340px; height: 54px; margin-top: 12px;}
+.section-label {font-size: .76rem; letter-spacing: .13em; color: #0f766e; font-weight: 700; margin-bottom: 8px;}
+.page-intro {color: #526878; font-size: 1.04rem; margin-bottom: 20px;}
+[data-testid="stVerticalBlockBorderWrapper"] {border-radius: 16px;}
