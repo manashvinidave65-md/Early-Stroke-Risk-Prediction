@@ -1,212 +1,389 @@
 # Early Stroke Risk Prediction Using Machine Learning and Class Rebalancing
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
-![Machine Learning](https://img.shields.io/badge/Machine-Learning-blue)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikitlearn&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-FF6600)
-![Google Colab](https://img.shields.io/badge/Google-Colab-F9AB00?logo=googlecolab&logoColor=white)
-![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
-
 ## Project Overview
 
-Stroke is a serious health condition that presents significant challenges in healthcare. This project investigates machine learning techniques for identifying patterns associated with stroke occurrence using demographic, lifestyle and health-related attributes.
+Stroke is a serious medical condition that can lead to
+long-term disability and life-threatening complications.
 
-The project focuses on addressing class imbalance, improving minority-class detection, comparing machine learning algorithms and investigating decision threshold optimization.
+This project explores the use of machine learning to
+identify stroke-associated patterns using demographic,
+medical and lifestyle-related features.
 
-This project is aligned with United Nations Sustainable Development Goal 3: Good Health and Well-Being.
+The project focuses on handling class imbalance,
+comparing classification algorithms and improving
+the detection of stroke-positive records.
 
-## Problem Statement
+## Sustainable Development Goal
 
-Healthcare datasets often contain significantly fewer positive cases than negative cases. This imbalance can cause traditional machine learning models to favour the majority class, resulting in poor detection of stroke-positive records despite achieving high overall accuracy.
-
-This project investigates class rebalancing and threshold selection techniques to address this challenge.
+SDG 3 - Good Health and Well-Being
 
 ## Project Objectives
 
-- Perform comprehensive exploratory data analysis.
-- Handle missing values and preprocess input features.
-- Address class imbalance using SMOTE.
-- Implement Random Forest and XGBoost classifiers.
-- Compare models using multiple evaluation metrics.
-- Investigate decision threshold optimization.
-- Analyse feature importance and classification errors.
-- Develop an interactive machine learning prototype.
-- Deploy a publicly accessible demonstration website.
+- Perform exploratory data analysis.
+- Identify important stroke-associated features.
+- Handle missing values and categorical variables.
+- Address class imbalance using SMOTE and SMOTENC.
+- Compare Random Forest and XGBoost classifiers.
+- Improve recall using decision threshold analysis.
+- Develop an interactive web application.
+- Deploy the trained machine learning model.
 
 ## Dataset
 
-The project uses the Stroke Prediction Dataset available on Kaggle.
+Dataset: Stroke Prediction Dataset
 
-Dataset source:
-https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
+Source:
+[Kaggle Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)
 
-| Property | Value |
-|---|---:|
-| Total records | 5,110 |
-| Total columns | 12 |
-| Input features | 10 |
-| Non-stroke records | 4,861 |
-| Stroke-positive records | 249 |
-| Missing BMI values | 201 |
-| Stroke-positive percentage | 4.87% |
+| Property | Details |
+|---|---|
+| Total Records | 5,110 |
+| Original Columns | 12 |
+| Input Features | 10 |
+| Target Variable | stroke |
+| Missing BMI Values | 201 |
+| Duplicate Records | 0 |
+| Non-Stroke Records | 4,861 |
+| Stroke Records | 249 |
+
+The dataset is highly imbalanced, with approximately
+4.87% stroke-positive records and 95.13% non-stroke records.
 
 ## Input Features
 
-- Gender
-- Age
-- Hypertension
-- Heart disease
-- Marital status
-- Work type
-- Residence type
-- Average glucose level
-- Body Mass Index (BMI)
-- Smoking status
+| Feature | Description |
+|---|---|
+| gender | Gender of the individual |
+| age | Age of the individual |
+| hypertension | Presence of hypertension |
+| heart_disease | Presence of heart disease |
+| ever_married | Marital status |
+| work_type | Employment category |
+| Residence_type | Urban or rural residence |
+| avg_glucose_level | Average glucose level |
+| bmi | Body Mass Index |
+| smoking_status | Smoking history |
 
 ## Project Methodology
 
 1. Dataset collection and inspection
-2. Exploratory Data Analysis (EDA)
+2. Exploratory data analysis
 3. Missing-value handling
-4. Stratified train-test splitting
-5. One-hot encoding
-6. Feature standardization
-7. SMOTE-based class rebalancing
-8. Random Forest classification
-9. XGBoost classification
-10. Model performance evaluation
-11. Validation-based threshold analysis
-12. Feature importance analysis
-13. Confusion matrix and error analysis
-14. Model serialization
-15. Prototype development and deployment (planned)
+4. Feature encoding and standardization
+5. Training, validation and testing split
+6. Baseline model training
+7. Class rebalancing using SMOTE and SMOTENC
+8. Model comparison
+9. Decision threshold selection
+10. Final model evaluation
+11. Feature importance analysis
+12. Model serialization
+13. Web application integration
 
-## Machine Learning Models
+## Exploratory Data Analysis
+
+### Stroke Class Distribution
+
+![Stroke Distribution](assets/stroke_distribution.png)
+
+### Age Distribution
+
+![Age Distribution](assets/age_distribution.png)
+
+### Age Distribution by Stroke Status
+
+![Age by Stroke](assets/age_by_stroke.png)
+
+### Glucose Level Distribution
+
+![Glucose Distribution](assets/glucose_distribution.png)
+
+### Correlation Heatmap
+
+![Correlation Heatmap](assets/correlation_heatmap.png)
+
+## Data Preprocessing
+
+The following preprocessing techniques were implemented:
+
+- Removal of the unnecessary ID column.
+- Median imputation for missing numerical values.
+- Most frequent imputation for categorical values.
+- One-hot encoding for categorical features.
+- Standardization of numerical features.
+- Stratified dataset splitting.
+
+### Dataset Split
+
+| Dataset | Percentage | Records |
+|---|---:|---:|
+| Training | 60% | 3,066 |
+| Validation | 20% | 1,022 |
+| Testing | 20% | 1,022 |
+
+Preprocessing parameters are learned from training data.
+
+Class rebalancing is applied only to training data.
+
+## Machine Learning Algorithms
 
 ### Random Forest
 
-Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve classification performance.
+Random Forest is an ensemble learning algorithm
+that combines multiple decision trees to perform
+classification.
 
 ### XGBoost
 
-XGBoost is a gradient boosting algorithm that builds decision trees sequentially to improve predictions by learning from previous errors.
+XGBoost is a gradient boosting algorithm that
+builds decision trees sequentially to improve
+prediction performance.
+
+## Class Rebalancing Techniques
 
 ### SMOTE
 
-Synthetic Minority Oversampling Technique (SMOTE) is used to generate synthetic minority-class samples and address class imbalance in the training dataset.
+Synthetic Minority Oversampling Technique generates
+synthetic minority-class samples to reduce
+class imbalance.
 
-## Initial Model Comparison
+### SMOTENC
 
-| Evaluation Metric | Random Forest | XGBoost |
-|---|---:|---:|
-| Accuracy | 92.17% | 85.91% |
-| Precision | 12.50% | 17.36% |
-| Recall | 10.00% | 50.00% |
-| F1-score | 0.1111 | 0.2577 |
-| ROC-AUC | 0.7529 | 0.8159 |
+SMOTENC is a variation of SMOTE designed for
+datasets containing both numerical and
+categorical features.
 
-XGBoost demonstrated better stroke-class recall and ROC-AUC in the initial model comparison.
+## Model Comparison
 
-## Corrected Milestone 2 Evaluation
+Five model configurations were evaluated using
+validation data.
 
-The selected XGBoost model was evaluated using a decision threshold of 0.30 and its matching fitted preprocessing pipeline.
+| Model | Recall | F1-Score | ROC-AUC |
+|---|---:|---:|---:|
+| Random Forest | 0.00 | 0.0000 | 0.7959 |
+| XGBoost | 0.04 | 0.0769 | 0.8503 |
+| Random Forest + SMOTE | 0.04 | 0.0563 | 0.7877 |
+| XGBoost + SMOTE | 0.24 | 0.1860 | 0.8082 |
+| XGBoost + SMOTENC | 0.54 | 0.2318 | 0.7990 |
 
-| Evaluation Metric | Result |
+These results were obtained before decision
+threshold optimization.
+
+## Final Model Selection
+
+XGBoost without resampling was selected because
+it achieved the highest validation ROC-AUC.
+
+Although class rebalancing improved recall at
+the default classification threshold, it did not
+produce the highest ROC-AUC in this experiment.
+
+Decision threshold analysis was subsequently
+performed to improve stroke-class detection.
+
+- Selected Algorithm: XGBoost
+- Resampling: None
+- Decision Threshold: 0.05
+
+The selected threshold is an experimental
+classification cutoff, not a clinical cutoff.
+
+## Final Model Performance
+
+| Evaluation Metric | Score |
 |---|---:|
-| Accuracy | 75.73% |
-| Precision | 13.33% |
-| Recall | 72.00% |
-| F1-score | 0.2250 |
-| ROC-AUC | 0.8122 |
-| Decision threshold | 0.30 |
+| Accuracy | 77.89% |
+| Precision | 15.63% |
+| Recall | 80.00% |
+| F1-Score | 0.2614 |
+| ROC-AUC | 0.8469 |
 
-### Confusion Matrix
+## Confusion Matrix
 
 | Actual / Predicted | No Stroke | Stroke |
 |---|---:|---:|
-| No Stroke | 738 | 234 |
-| Stroke | 14 | 36 |
+| No Stroke | 756 | 216 |
+| Stroke | 10 | 40 |
 
-The model identified 36 out of 50 stroke-positive test records.
+- True Negatives: 756
+- False Positives: 216
+- False Negatives: 10
+- True Positives: 40
+- Correct Predictions: 796
+- Incorrect Predictions: 226
 
-These are corrected Milestone 2 experimental results, not clinically validated performance estimates. Further validation is planned.
+The model correctly identified 40 out of 50
+stroke-positive records in the test dataset.
+
+## Milestone 2 vs Final Implementation
+
+| Metric | Milestone 2 | Final Model |
+|---|---:|---:|
+| Accuracy | 75.73% | 77.89% |
+| Precision | 13.33% | 15.63% |
+| Recall | 72.00% | 80.00% |
+| F1-Score | 0.2250 | 0.2614 |
+| ROC-AUC | 0.8122 | 0.8469 |
+
+The final implementation achieved improved recorded
+performance across all five evaluation metrics.
 
 ## Technologies Used
 
+### Programming Language
+
 - Python
-- Pandas
+
+### Libraries
+
 - NumPy
+- Pandas
 - Matplotlib
 - Seaborn
 - Scikit-learn
 - Imbalanced-learn
 - XGBoost
 - Joblib
+
+### Development Tools
+
 - Google Colab
+- Jupyter Notebook
 - GitHub
+
+### Planned Web Application
+
+- Streamlit
+- HTML and CSS
+- Streamlit Community Cloud
 
 ## Repository Structure
 
-- notebooks/ - Machine learning implementation
-- data/ - Dataset documentation and source
+```text
+Early-Stroke-Risk-Prediction/
+│
+├── assets/
+│   ├── EDA visualizations
+│   └── Model evaluation visualizations
+│
+├── data/
+│   └── README.md
+│
+├── notebooks/
+│   ├── README.md
+│   ├── Stroke_Risk_Prediction_Milestone_2.ipynb
+│   └── Stroke_Risk_Prediction_Final.ipynb
+│
+├── models/
+│   ├── README.md
+│   ├── model.pkl
+│   ├── preprocessor.pkl
+│   ├── threshold.pkl
+│   └── model_name.pkl
+│
+├── reports/
+│
+├── .gitignore
+└── README.md
+```
 
-Additional folders for model artifacts, visualizations, application code and project reports will be added during further development.
+## How to Run the Machine Learning Notebook
 
-## How to Run
-
-1. Download the dataset from the Kaggle link.
-2. Open the notebooks directory.
-3. Download the Milestone 2 Jupyter notebook.
-4. Open the notebook in Google Colab.
+1. Clone or download this repository.
+2. Download the dataset from the Kaggle link.
+3. Open the final notebook in Google Colab.
+4. Install the required libraries.
 5. Upload the dataset when prompted.
 6. Execute all notebook cells sequentially.
+7. Review the model evaluation results.
+8. Download the generated model artifacts.
 
-## Project Status
+## Trained Model Artifacts
 
-### Completed
+| File | Purpose |
+|---|---|
+| model.pkl | Trained XGBoost classifier |
+| preprocessor.pkl | Fitted preprocessing pipeline |
+| threshold.pkl | Selected classification threshold |
+| model_name.pkl | Selected model name |
 
-- [x] Dataset collection and inspection
+These artifacts allow the web application to
+generate predictions without retraining the model.
+
+## Web Application
+
+The planned Streamlit application will include:
+
+- Home page
+- Interactive prediction form
+- Dataset and EDA dashboard
+- Model performance dashboard
+- Feature importance analysis
+- Project methodology
+- About the project
+
+Deployment Status: Under Development
+
+## Project Progress
+
+- [x] Dataset collection
 - [x] Exploratory data analysis
 - [x] Data preprocessing
-- [x] SMOTE-based class rebalancing
-- [x] Random Forest implementation
-- [x] XGBoost implementation
+- [x] Baseline model training
+- [x] SMOTE implementation
+- [x] SMOTENC implementation
 - [x] Model comparison
 - [x] Decision threshold analysis
+- [x] Final model evaluation
 - [x] Feature importance analysis
-- [x] Error analysis
 - [x] Model serialization
-- [x] Prediction function
-- [x] Preprocessing consistency correction
-
-### Upcoming
-
-- [ ] SMOTENC experimentation
-- [ ] Further model validation
-- [ ] Final evaluation and model selection
-- [ ] Interactive prediction interface
-- [ ] Data visualization dashboard
-- [ ] Website development
-- [ ] Prototype testing
+- [x] GitHub repository setup
+- [ ] Web application development
+- [ ] Model integration
+- [ ] Application testing
 - [ ] Public deployment
-- [ ] Final project documentation
 
 ## Limitations
 
-- The dataset contains a limited number of stroke-positive records.
-- Recall-focused threshold selection increases false-positive predictions.
-- Standard SMOTE after one-hot encoding may generate fractional categorical indicators.
-- Earlier experiments examined multiple thresholds on the test dataset, limiting its independence as a final evaluation set.
-- Further independent validation is required.
-- The model has not been clinically validated.
+- The dataset contains relatively few stroke-positive records.
+- The model has limited precision and produces false positives.
+- Standard SMOTE can generate fractional values for
+  one-hot encoded categorical features.
+- The selected threshold is based on experimental
+  validation results.
+- The test split was previously examined during
+  Milestone 2, limiting independent evaluation.
+- The model has not been externally or clinically validated.
+- Model scores should not be interpreted as calibrated
+  probabilities of future stroke.
+- Feature importance does not establish causation.
 
-## References
+## Future Scope
 
-- Stroke Prediction Dataset - Kaggle
-- Scikit-learn Documentation
-- XGBoost Documentation
-- Imbalanced-learn Documentation
+- Evaluation using larger and more diverse datasets.
+- External validation of model performance.
+- Improvement of precision and recall.
+- Investigation of probability calibration.
+- Interactive machine learning dashboards.
+- Deployment of an accessible educational web application.
 
 ## Disclaimer
 
-This project is an educational machine learning research prototype. It is not a clinically validated diagnostic tool and must not be used for medical diagnosis, treatment decisions or individual medical risk assessment.
+This project is developed for academic and educational
+purposes only.
+
+The machine learning model is not a medical diagnostic
+tool and should not be used for clinical decisions.
+
+## Conclusion
+
+This project demonstrates the application of machine
+learning and class-rebalancing techniques to an
+imbalanced healthcare dataset.
+
+The experimental results highlight the importance of
+comparing multiple models, selecting appropriate
+evaluation metrics and optimizing the decision threshold.
+
+The final model achieved a recall of 80% and a ROC-AUC
+of 0.8469 on the available test dataset.
