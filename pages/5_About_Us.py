@@ -1,5 +1,5 @@
 import streamlit as st
-from ui import apply_style
+from ui import apply_style, detail_card, footer
 
 st.set_page_config(page_title="About the Project", layout="wide")
 apply_style()
@@ -15,3 +15,19 @@ st.subheader("Limitations")
 st.markdown("- Few stroke-positive records\n- Low precision\n- No independent external or clinical validation\n- Model scores are not calibrated future stroke probabilities")
 st.warning("Educational use only. Not for diagnosis or medical decisions.")
 st.markdown("[View source code on GitHub](https://github.com/manashvinidave65-md/Early-Stroke-Risk-Prediction)")
+
+st.subheader("Research contributions")
+a,b,c = st.columns(3)
+with a:
+    detail_card("01", "Data exploration", "Investigate imbalance, missing values and feature distributions.")
+with b:
+    detail_card("02", "Model comparison", "Evaluate baseline and class-rebalanced classifiers.")
+with c:
+    detail_card("03", "Web demonstration", "Connect the saved model to an interactive educational interface.")
+st.subheader("Future scope")
+st.markdown("- Validate on an independent dataset.\n- Investigate probability calibration and subgroup performance.\n- Explore ways to reduce false positives without sacrificing recall.")
+st.subheader("Project resources")
+st.link_button("Source code and notebooks", "https://github.com/manashvinidave65-md/Early-Stroke-Risk-Prediction")
+st.link_button("Original dataset", "https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset")
+
+footer()
