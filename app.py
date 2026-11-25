@@ -12,8 +12,14 @@ st.markdown("""
 <svg class="pulse" viewBox="0 0 340 54" aria-hidden="true"><path d="M0 28 H80 L94 18 L108 38 L125 5 L145 49 L163 28 H210 L223 20 L237 34 L249 28 H340" fill="none" stroke="#75e4ce" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><svg class="hero-art" viewBox="0 0 260 240" aria-hidden="true"><circle cx="130" cy="120" r="105" fill="#ffffff" opacity=".07"/><circle cx="130" cy="120" r="80" fill="none" stroke="#99e7d6" stroke-width="1" stroke-dasharray="5 8"/><path d="M130 65 C95 25 48 75 70 112 C42 148 88 190 130 164 C172 190 218 148 190 112 C212 75 165 25 130 65Z" fill="#75e4ce" fill-opacity=".15" stroke="#99e7d6" stroke-width="3"/><path d="M130 65 V164 M80 95 L105 115 L130 100 L155 125 L180 95 M105 115 L100 150 M155 125 L165 150" fill="none" stroke="#99e7d6" stroke-width="2"/><g fill="#fff"><circle cx="105" cy="115" r="5"/><circle cx="155" cy="125" r="5"/><circle cx="130" cy="100" r="5"/><circle cx="100" cy="150" r="4"/><circle cx="165" cy="150" r="4"/></g></svg></div></div>
 """, unsafe_allow_html=True)
 
-if st.button("Explore prediction demo →", type="primary"):
-    st.switch_page("pages/1_Stroke_Prediction.py")
+a,b = st.columns(2)
+with a:
+    if st.button("Try the interactive demo →", type="primary", use_container_width=True):
+        st.switch_page("pages/1_Stroke_Prediction.py")
+with b:
+    if st.button("Learn about stroke →", use_container_width=True):
+        st.switch_page("pages/6_Stroke_Awareness.py")
+st.caption("New here? Start with stroke awareness, then try a fictional sample. No medical knowledge required.")
 
 st.markdown('<div class="section-label">RESEARCH AT A GLANCE</div>', unsafe_allow_html=True)
 a, b, c = st.columns(3)
