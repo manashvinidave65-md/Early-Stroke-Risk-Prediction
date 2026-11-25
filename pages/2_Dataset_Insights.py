@@ -1,8 +1,12 @@
 import streamlit as st
+from ui import apply_style
 from pathlib import Path
 
 st.set_page_config(page_title="Dataset Insights", layout="wide")
+apply_style()
+st.markdown('<div class="section-label">02 / EXPLORATORY DATA ANALYSIS</div>', unsafe_allow_html=True)
 st.title("Dataset and Insights")
+st.markdown('<div class="page-intro">Understand the dataset behind the machine learning models.</div>', unsafe_allow_html=True)
 st.write("Source: [Kaggle Stroke Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset)")
 
 a, b, c = st.columns(3)
