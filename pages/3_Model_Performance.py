@@ -1,9 +1,13 @@
 import streamlit as st
+from ui import apply_style
 import pandas as pd
 from pathlib import Path
 
 st.set_page_config(page_title="Model Performance", layout="wide")
+apply_style()
+st.markdown('<div class="section-label">03 / EVALUATION DASHBOARD</div>', unsafe_allow_html=True)
 st.title("Model Performance")
+st.markdown('<div class="page-intro">Compare experimental results and understand the trade-offs.</div>', unsafe_allow_html=True)
 st.write("Selected model: XGBoost without resampling. Decision threshold: 0.05.")
 
 a, b, c = st.columns(3)
