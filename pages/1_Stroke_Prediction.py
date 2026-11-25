@@ -1,5 +1,5 @@
 import streamlit as st
-from ui import apply_style
+from ui import apply_style, detail_card, footer
 import pandas as pd
 import joblib
 from pathlib import Path
@@ -21,6 +21,15 @@ def load_model():
     threshold = joblib.load(folder / "threshold.pkl")
     return model, preprocessor, threshold
 
+a, b, c = st.columns(3)
+with a:
+    detail_card("01", "Sample profile", "Use the prefilled fictional record or change the inputs.")
+with b:
+    detail_card("02", "Run model", "The saved preprocessing and classifier evaluate the record.")
+with c:
+    detail_card("03", "Interpret", "Compare the model score with the experimental cutoff.")
+
+st.subheader("Sample profile")
 with st.form("prediction"):
     left, right = st.columns(2)
     with left:
@@ -54,8 +63,10 @@ if submitted:
         score = float(model.predict_proba(processed)[0][1])
 
         st.subheader("Model output")
+        st.caption("XGBoost · Experimental binary classification")
         st.metric("Model score (not clinical risk)", f"{score:.4f}")
         st.write("Decision threshold:", threshold)
+        st.write("The score is compared with the cutoff, not interpreted as a medical risk percentage.")
         if score >= threshold:
             st.info("Stroke-positive classification")
         else:
@@ -64,3 +75,11 @@ if submitted:
     except Exception as error:
         st.error("Model could not be loaded or evaluated. Check the saved files and library versions.")
         st.caption(str(error))
+
+with st.expander("How are these inputs processed?"):
+    st.write("Numerical inputs are scaled and categorical inputs are encoded using the saved training pipeline.")
+with st.expander("What does the result mean?"):
+    st.write("A positive label means the score meets the experimental threshold. Neither label establishes a diagnosis.")
+st.page_link("pages/3_Model_Performance.py", label="Explore model reliability and limitations →")
+
+footer()
