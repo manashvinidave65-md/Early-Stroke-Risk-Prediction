@@ -17,3 +17,24 @@ h1,h2,h3 {letter-spacing: -0.035em; color: #102b40;}
 .section-label {font-size: .76rem; letter-spacing: .13em; color: #0f766e; font-weight: 700; margin-bottom: 8px;}
 .page-intro {color: #526878; font-size: 1.04rem; margin-bottom: 20px;}
 [data-testid="stVerticalBlockBorderWrapper"] {border-radius: 16px;}
+
+/* Detailed research dashboard */
+[data-testid="stSidebar"] {border-right:1px solid #d1e2e5;}
+[data-testid="stSidebarNav"] a {border-radius:10px; padding:9px 12px;}
+[data-testid="stSidebarNav"] a:hover {background:#d1e7e6;}
+[data-testid="stVerticalBlockBorderWrapper"] {background:white; box-shadow:0 4px 18px #102b4008;}
+[data-testid="stTabs"] button {font-weight:600;}
+[data-testid="stExpander"] {background:white; border-radius:12px;}
+.hero {position:relative; background:radial-gradient(circle at 85% 25%,#237e83 0,transparent 42%),linear-gradient(125deg,#102b40,#124e59);}
+.hero-grid {display:grid;grid-template-columns: 1.5fr 1fr;gap:24px;align-items:center;}
+.hero-art {width:100%;max-width:320px;justify-self:center;}
+.kicker {font-size:.8rem;letter-spacing:.12em;color:#0f766e;font-weight:700;}
+.detail-card {background:white;border:1px solid #dce8eb;border-radius:16px;padding:20px;height:100%;box-sizing:border-box;}
+.detail-card h3 {font-size:1.15rem;margin:8px 0;}
+.detail-card p {color:#526878;font-size:.95rem;line-height:1.6;margin:0;}
+.step-number {display:inline-block;background:#d9f1ed;color:#0f766e;border-radius:9px;padding:6px 10px;font-weight:700;}
+.flow-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;}
+.split-bar {display:flex;height:20px;border-radius:10px;overflow:hidden;margin:12px 0;}
+.split-bar span {display:block;}
+.footer-note {border-top:1px solid #dce8eb;margin-top:32px;padding-top:16px;color:#526878;font-size:.85rem;}
+@media(max-width:700px){.hero-grid,.flow-grid{grid-template-columns:1fr}.hero-art{max-width:180px}.block-container{padding-top:2rem}.hero{padding:24px}}
