@@ -1,7 +1,11 @@
 import streamlit as st
+from ui import apply_style
 
 st.set_page_config(page_title="About the Project", layout="wide")
+apply_style()
+st.markdown('<div class="section-label">05 / ACADEMIC RESEARCH</div>', unsafe_allow_html=True)
 st.title("About the Project")
+st.markdown('<div class="page-intro">A student project exploring machine learning for healthcare awareness.</div>', unsafe_allow_html=True)
 st.subheader("Early Stroke Risk Prediction Using Machine Learning and Class Rebalancing")
 st.write("B.Tech Computer Science and Engineering academic project.")
 st.write("SDG 3: Good Health and Well-Being")
